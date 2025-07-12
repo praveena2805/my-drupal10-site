@@ -1,0 +1,10 @@
+/web/sites/default/files
+/web/sites/default/settings.local.php
+/vendor
+/web/core
+/web/modules/contrib
+/web/themes/contrib
+/.ddev/sequelpro.spf
+/.idea
+*.sql
+*.tar.gz
