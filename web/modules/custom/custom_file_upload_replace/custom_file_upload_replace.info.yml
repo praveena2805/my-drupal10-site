@@ -1,0 +1,7 @@
+name: 'Custom File Upload Replace'
+type: module
+description: 'Handles custom file replacement logic, ensuring correct file paths and resolving filename conflicts.'
+core_version_requirement: ^10
+package: Custom
+dependencies:
+  - file

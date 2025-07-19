@@ -1,0 +1,7 @@
+name: Countries Field
+type: module
+description: 'Provides a custom field type for countries using the Sample Countries API.'
+package: Custom
+core_version_requirement: ^9 || ^10
+dependencies:
+  - drupal:field

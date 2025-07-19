@@ -1,0 +1,18 @@
+{#
+/**
+ * @file
+ * Default template for the country formatter.
+ *
+ * Available variables:
+ * - country_name: The name of the country.
+ * - capital: The capital city.
+ * - currency: The currency code.
+ */
+#}
+<div class="country-field">
+  {% if country_name %}
+    <div class="country-name">
+      <strong>{{ 'Country'|t }}:</strong> {{ country_name }}
+    </div>
+  {% endif %}
+</div>

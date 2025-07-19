@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * @file
+ * Contains countries_field.module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function countries_field_theme() {
+  return [
+    'country_formatter' => [
+      'variables' => [
+        'country_name' => NULL,
+        
+      ],
+      'template' => 'country-formatter',
+    ],
+  ];
+}
