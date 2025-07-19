@@ -1,0 +1,74 @@
+<?php
+
+/**
+ * @file
+ * Contains ah_epic_upload_replace.module.
+ */
+
+use Drupal\Core\File\FileSystemInterface;
+use Drupal\file\FileInterface;
+
+/**
+ * Implements hook_file_presave().
+ */
+function custom_file_upload_replace_file_presave(FileInterface $file) {
+  $database = \Drupal::database();
+  $fileSystem = \Drupal::service('file_system');
+
+  // Get the count of existing files
+  $count = $database->select('file_managed', 'f')
+    ->countQuery()
+    ->execute()
+    ->fetchField();
+
+  // If this is the first file upload, let it proceed normally
+  if ($count == 0) {
+    \Drupal::logger('custom_file_upload_replace')->debug('First file upload, keeping original name: @name', [
+      '@name' => $file->getFilename()
+    ]);
+    return;
+  }
+
+  // For subsequent uploads, get the first file's information
+  $first_file = $database->select('file_managed', 'f')
+    ->fields('f')
+    ->orderBy('created', 'ASC')
+    ->range(0, 1)
+    ->execute()
+    ->fetchObject();
+
+  if ($first_file && $file->isNew()) {
+    try {
+      // Get directory and extension information
+      $first_file_info = pathinfo($first_file->uri);
+      $new_file_info = pathinfo($file->getFileUri());
+      
+      // Create the target URI using first file's name
+      $target_uri = $first_file_info['dirname'] . '/' . $first_file_info['filename'] . '.' . $first_file_info['extension'];
+      
+      // Ensure the directory exists
+      $fileSystem->prepareDirectory($first_file_info['dirname'], FileSystemInterface::CREATE_DIRECTORY);
+      
+      // Move the new file to the target location
+      $fileSystem->move($file->getFileUri(), $target_uri, FileSystemInterface::EXISTS_REPLACE);
+      
+      // Set the new file's URI and filename to match the first file
+      $file->setFileUri($target_uri);
+      $file->setFilename($first_file_info['basename']);
+      
+      // Delete the old file record
+      $database->delete('file_managed')
+        ->condition('fid', $first_file->fid)
+        ->execute();
+        
+      \Drupal::logger('custom_file_upload_replace')->debug('File replaced successfully: @uri', [
+        '@uri' => $target_uri
+      ]);
+    }
+    catch (\Exception $e) {
+      \Drupal::logger('custom_file_upload_replace')->error('Error replacing file: @error', [
+        '@error' => $e->getMessage()
+      ]);
+    }
+  }
+}
