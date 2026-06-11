@@ -1,0 +1,13 @@
+uuid: ef16afca-c669-441c-9918-422105e4347f
+langcode: en
+status: true
+dependencies:
+  module:
+    - component_builder
+_core:
+  default_config_hash: GB5ZY3fvLqjpUASDOxhrvzULYgRC7emWxbjOovJsVUk
+id: component_item_delete_action
+label: 'Delete Component Item'
+type: component_item
+plugin: 'entity:delete_action:component_item'
+configuration: {  }

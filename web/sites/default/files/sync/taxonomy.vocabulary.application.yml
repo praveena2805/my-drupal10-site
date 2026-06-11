@@ -1,0 +1,9 @@
+uuid: 7e2bdd0f-4bb3-40cf-85fd-a234506f1fcb
+langcode: en
+status: true
+dependencies: {  }
+name: application
+vid: application
+description: null
+weight: 0
+new_revision: false

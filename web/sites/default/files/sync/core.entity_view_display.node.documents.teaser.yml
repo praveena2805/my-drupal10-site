@@ -1,0 +1,36 @@
+uuid: 07a5b2de-6f2a-4d06-aa3f-10d274481aef
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.documents.body
+    - field.field.node.documents.field_application
+    - field.field.node.documents.field_class_documents
+    - node.type.documents
+  module:
+    - text
+    - user
+id: node.documents.teaser
+targetEntityType: node
+bundle: documents
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_application: true
+  field_class_documents: true
+  search_api_attachments: true
+  search_api_excerpt: true

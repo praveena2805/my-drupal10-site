@@ -1,0 +1,29 @@
+uuid: aa5e25c8-a4d7-4ca4-837b-4b9d28a3890c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_application
+    - node.type.documents
+    - taxonomy.vocabulary.application
+id: node.documents.field_application
+field_name: field_application
+entity_type: node
+bundle: documents
+label: application
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      application: application
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
