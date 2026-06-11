@@ -1,0 +1,13 @@
+uuid: 275421f5-9e3c-4bdd-bd10-0762e1f1a240
+langcode: en
+status: true
+dependencies:
+  module:
+    - component_builder
+_core:
+  default_config_hash: ldm636Gv0clkO_rL8zMx7TZliXX-HnO_og-RYCsh0Nw
+id: component_wrapper_delete_action
+label: 'Delete Component Wrapper'
+type: component_wrapper
+plugin: 'entity:delete_action:component_wrapper'
+configuration: {  }

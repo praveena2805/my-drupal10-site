@@ -1,0 +1,11 @@
+cache_backend: search_api_attachments.cache_keyvalue
+cache_file_scheme: public
+tika_extractor_configuration:
+  tika_config_path: ''
+tika_server_extractor_configuration:
+  scheme: http
+  host: localhost
+  port: '9998'
+  timeout: 5
+pdftotext_extractor_configuration:
+  pdftotext_path: pdftotext

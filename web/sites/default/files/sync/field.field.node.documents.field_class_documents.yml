@@ -1,0 +1,27 @@
+uuid: 6d9d969a-b349-4b04-87b1-28855e28c2ff
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_class_documents
+    - node.type.documents
+  module:
+    - file
+id: node.documents.field_class_documents
+field_name: field_class_documents
+entity_type: node
+bundle: documents
+label: 'Class Documents'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'txt pdf'
+  max_filesize: ''
+  description_field: false
+field_type: file
