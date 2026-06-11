@@ -4,7 +4,7 @@ langcode: en
 uuid: 0f4c8053-d126-4e72-be1e-c25219bd6f62
 name: my-drupal-site
 mail: praveena@test.com
-slogan: ''
+slogan: 'Hello Site'
 page:
   403: ''
   404: ''
